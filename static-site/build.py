@@ -52,7 +52,9 @@ def main():
         prefix = '../' * (len(p.relative_to(DIST).parts) - 1)
         if p == DIST / 'admin/index.html': prefix = ''
         for url, local in vendors.items():
-            text = text.replace(url, (prefix if p.suffix == '.html' else '${window.MindlineStatic.base}') + local)
+            # Import-map targets must be URL-like (./, ../ or /), not bare
+            # specifiers such as vendor/three/three.module.js.
+            text = text.replace(url, ((prefix or './') if p.suffix == '.html' else '${window.MindlineStatic.base}') + local)
         text = re.sub(r'<link[^>]+rel="preconnect"[^>]*>', '', text)
         if p.suffix == '.html':
             root = '../' * (len(p.relative_to(DIST).parts) - 1)

@@ -19,7 +19,9 @@ class Page(HTMLParser):
         if tag=='script':self.importmap=False
     def handle_data(self,value):
         if self.importmap:
-            for asset in json.loads(value).get('imports',{}).values():self.check(asset,directory=asset.endswith('/'))
+            for asset in json.loads(value).get('imports',{}).values():
+                assert asset.startswith(('./','../','/','https://','http://')), f'Invalid bare import-map target in {self.p}: {asset}'
+                self.check(asset,directory=asset.endswith('/'))
     def check(self,value,external_link=False,directory=False):
         if not value or value.startswith(('#','data:','blob:','mailto:')):return
         u=urlparse(urljoin(self.base,value))
