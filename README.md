@@ -6,6 +6,8 @@ Mindline connects local antimicrobial-resistance evidence with the reasoning cli
 
 This repository contains the application, a complete browser-only edition, both interactive demo films, and the synthetic feed simulator. The repository remains private.
 
+**[Open the live app](https://mindline-demo.calmpearl2.chatgpt.site/)** · **[Watch the interactive film](https://mindline-demo.calmpearl2.chatgpt.site/demo/)** · **[Open admin and knowledge](https://mindline-demo.calmpearl2.chatgpt.site/admin/)**
+
 ## Watch the demo
 
 A 70-second walkthrough with an original instrumental soundtrack:
@@ -22,6 +24,14 @@ https://github.com/user-attachments/assets/1567df8d-34b4-4b7e-9903-309a3d1b925b
 
 *Clinician contributions accumulate into searchable concepts and relationships, with a tag-tree interface and local RDF/SPARQL support.*
 
+![Doctor dashboard with laboratory evidence](docs/media/doctor-dashboard.png)
+
+*The doctor dashboard shows the selected patient group, organisms and laboratory resistance results.*
+
+![Searchable circular data visualization](docs/media/data-ring.png)
+
+*The Data view keeps the circular visualization alongside searchable filters and readable summaries.*
+
 ## Explore locally
 
 Build and serve the static edition from the repository root:
@@ -33,7 +43,7 @@ python -m http.server 18973 --directory static-site/dist
 
 Open `http://localhost:18973/` and choose the doctor or hygiene demo account. Explore `/admin/` for the knowledge library and simulator, `/demo/` for the latest interactive film, and `/demo-v2/` for the alternative film.
 
-The generated `static-site/dist` directory can be served by an ordinary static host. It includes its data, fonts, libraries, films and 3D scene; no application server or external CDN is needed. Public hosting is being configured separately; this README does not claim an unverified deployment is live.
+The generated `static-site/dist` directory can be served by an ordinary static host. It includes its data, fonts, libraries, films and 3D scene; no application server or external CDN is needed. The public demo above is hosted on Sites; the GitHub source remains private.
 
 For the Python edition:
 
