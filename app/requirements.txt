@@ -1,0 +1,2 @@
+# Local RDF knowledge projection and real SPARQL SELECT execution.
+rdflib>=7.1,<8

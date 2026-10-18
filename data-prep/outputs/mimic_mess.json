@@ -1,0 +1,9 @@
+{
+  "sample has a date but no time": 183,
+  "MIC censored (<= or >=)": 668,
+  "interpretation I (susceptible, increased exposure)": 28,
+  "result has no availability time": 16,
+  "specimens": 1336,
+  "specimens whose results became available at more than one time (staged)": 235,
+  "rows": 2899
+}

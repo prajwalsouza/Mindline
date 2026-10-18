@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Mindline — the film</title>
+  <meta name="description" content="An interactive Mindline demo using synthetic laboratory data: what the lab knows and what clinicians know, in one place.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>(function () {   // the app's theme (stored by the app as a JSON string); light and dark only
+    var t = null; try { t = (localStorage.getItem("rl-theme") || "").replace(/"/g, ""); } catch (e) {}
+    if (t !== "matte-dark" && t !== "quiet-light") t = matchMedia("(prefers-color-scheme: dark)").matches ? "matte-dark" : "quiet-light";
+    document.documentElement.dataset.theme = t;
+  })();</script>
+  <link rel="stylesheet" href="demo.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+  <link rel="stylesheet" href="../entities.css">
+  <script src="../entities.js" defer></script>
+  <script type="module" src="demo.js"></script>
+</head>
+<body>
+  <main class="frame" id="frame">
+    <div class="stage" id="stage">
+      <svg id="svg" aria-hidden="true">
+        <defs>
+          <pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" class="hatch-bg"/><line x1="0" y1="0" x2="0" y2="7" class="hatch-line"/></pattern>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+        </defs>
+        <g id="art"></g><g id="pool"></g><g id="art2"></g>
+      </svg>
+      <div class="ui" id="ui"></div>
+      <h1 class="h" id="h" aria-live="polite"></h1>
+      <p class="c" id="c"></p>
+    </div>
+  </main>
+
+  <a class="brand" href="../" title="Open Mindline"><span class="mark"><i></i><i></i><i></i></span><b>Mindline</b></a>
+  <div class="tip" id="tip" role="status"></div>
+
+  <nav class="controls" aria-label="Playback">
+    <button type="button" id="play" aria-label="Pause (P)" title="Pause (P)"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-pause" d="M8.5 5.5v13M15.5 5.5v13"/><path class="i-play" d="M8 5.5l11 6.5-11 6.5z"/></svg></button>
+    <div class="bar" id="bar"></div>
+    <button type="button" id="theme" aria-label="Switch theme" title="Switch theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-moon" d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6z"/><g class="i-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></g></svg></button>
+  </nav>
+  <noscript><p style="padding:2rem;font:18px system-ui">This film needs JavaScript.</p></noscript>
+</body>
+</html>

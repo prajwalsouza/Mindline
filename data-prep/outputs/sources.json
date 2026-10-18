@@ -1,0 +1,42 @@
+[
+  {
+    "file": "mimic-iv-demo/microbiologyevents.csv.gz",
+    "url": "https://physionet.org/files/mimic-iv-demo/2.2/hosp/microbiologyevents.csv.gz",
+    "bytes": 80991,
+    "sha256": "fa462443cc5777ebf9d833f71c67f2a89b4a074eb376320da70bed220e918ad4",
+    "checked": "2026-10-18T00:47:56+00:00",
+    "licence": "Open Data Commons Open Database License v1.0 (MIMIC-IV demo 2.2)"
+  },
+  {
+    "file": "mimic-iv-demo/transfers.csv.gz",
+    "url": "https://physionet.org/files/mimic-iv-demo/2.2/hosp/transfers.csv.gz",
+    "bytes": 23480,
+    "sha256": "41151539886d12d57159b65ffe4d7df5a7ef8ceb7cd113ea9a56fbfbfd78a87c",
+    "checked": "2026-10-18T00:47:56+00:00",
+    "licence": "Open Data Commons Open Database License v1.0 (MIMIC-IV demo 2.2)"
+  },
+  {
+    "file": "mimic-iv-demo/admissions.csv.gz",
+    "url": "https://physionet.org/files/mimic-iv-demo/2.2/hosp/admissions.csv.gz",
+    "bytes": 11072,
+    "sha256": "910b9f160ffdf1e08ea673585393f347c773ccc87d66875c627584a903ae8493",
+    "checked": "2026-10-18T00:47:56+00:00",
+    "licence": "Open Data Commons Open Database License v1.0 (MIMIC-IV demo 2.2)"
+  },
+  {
+    "file": "mimic-iv-demo/patients.csv.gz",
+    "url": "https://physionet.org/files/mimic-iv-demo/2.2/hosp/patients.csv.gz",
+    "bytes": 1083,
+    "sha256": "59dcc6cd8450ddf03ad32cc7d76e41caa4c9633541715987f590c74835cf6fae",
+    "checked": "2026-10-18T00:47:56+00:00",
+    "licence": "Open Data Commons Open Database License v1.0 (MIMIC-IV demo 2.2)"
+  },
+  {
+    "file": "mimic-iv-demo/LICENSE.txt",
+    "url": "https://physionet.org/files/mimic-iv-demo/2.2/LICENSE.txt",
+    "bytes": 25815,
+    "sha256": "bcdfcd4f31c790e30fb645dc36414907172405897adff329ad379eed85d12017",
+    "checked": "2026-10-18T00:47:56+00:00",
+    "licence": "Open Data Commons Open Database License v1.0 (MIMIC-IV demo 2.2)"
+  }
+]

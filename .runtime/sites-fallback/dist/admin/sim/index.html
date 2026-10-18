@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en" data-theme="quiet-light">
+<head>
+  <base href="./">
+  <script src="../../runtime/bridge.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Feed Simulator</title>
+  <meta name="description" content="Admin tool: generate a simulated incoming lab feed from the Tyks dataset, step by step, and watch it arrive.">
+  
+  
+  <link href="../../vendor/fonts-ed9f6adf5b.css" rel="stylesheet">
+  <link rel="stylesheet" href="app.css">
+  <script>(function () { try { var th = (localStorage.getItem("rl-theme") || "quiet-light").replace(/"/g, ""); document.documentElement.dataset.theme = th;
+    if (/[?&]embed=1/.test(location.search)) document.documentElement.classList.add("embed"); } catch (e) {} })();</script>
+  <link href="../../vendor/fonts-bb20875fd4.css" rel="stylesheet">
+  <script src="../../vendor/d3.min.js"></script>
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><span class="pill">Admin</span><b>Feed simulator</b><small>Simulated lab data · not real results</small></div>
+    <nav class="steps" id="steps" aria-label="Steps">
+      <div class="track"><i id="trackFill"></i></div>
+      <button data-step="1"><span>1</span>Sources</button>
+      <button data-step="2"><span>2</span>Time</button>
+      <button data-step="3"><span>3</span>Noise</button>
+      <button data-step="4"><span>4</span>Events</button>
+      <button data-step="5"><span>5</span>Watch</button>
+      <button data-step="6"><span>6</span>Data</button>
+    </nav>
+    <div class="right"><button class="advsw" id="advsw" aria-pressed="false"><span class="sw"></span>Advanced</button><div class="pair" id="theme" hidden>
+      <button data-theme="quiet-light">Light</button>
+      <button data-theme="matte-dark">Dark</button>
+    </div></div>
+  </header>
+
+  <!-- the simple view: one visual, everything already chosen (Advanced shows the step-by-step generator) -->
+  <section class="simple" id="simple">
+    <div class="sx-text">
+      <h1>The feed, arriving.</h1>
+      <p class="sx-lede">We don't have a live lab feed yet, so this makes one. It replays the Tyks data and adds new patients, so results arrive day by day the way they would in a hospital: late, in stages, sometimes corrected. That lets us test the app on data that keeps changing.</p>
+      <p class="sx-how">Each dot is one result, landing on its ward at the day the sample was taken. The further it flies back, the later it arrived.</p>
+      <ul class="sx-src" id="sxsrc"></ul>
+      <div class="sx-now"><small>Today in the feed</small><b id="sxdate">–</b><button class="go" id="sxplay">Play</button></div>
+      <div class="sx-events"><small>What is happening</small><ol id="sxev"></ol></div>
+    </div>
+    <div class="sx-vis" id="sxvis"><canvas id="sxcanvas"></canvas><div class="sx-tip" id="sxtip"></div></div>
+  </section>
+
+  <main class="stage">
+    <!-- 1 · sources -->
+    <section class="panel" data-panel="1">
+      <h2>Where the data comes from.</h2>
+      <p class="lede">Every case comes from the Tyks data. Two real hospital datasets decide when results arrive and when patients come back.</p>
+      <div class="sources">
+        <div class="srccards" id="srccards"><div class="skel card-skel"></div><div class="skel card-skel"></div><div class="skel card-skel"></div></div>
+        <figure class="ribbonwrap"><div id="ribbon"></div></figure>
+      </div>
+    </section>
+
+    <!-- 2 · window -->
+    <section class="panel" data-panel="2">
+      <h2>Pick the time.</h2>
+      <p class="lede">Drag the red window. Inside the given data, cases are replayed. After it ends, new cases are made from the same ward and season a year earlier.</p>
+      <div class="tlslot"></div>
+      <div class="knobs"><div class="knob" id="seedk"></div></div>
+    </section>
+
+    <!-- 3 · mess -->
+    <section class="panel" data-panel="3">
+      <h2>How noisy is the feed?</h2>
+      <p class="lede">Real lab feeds have late, repeated and corrected results. Pick how many.</p>
+      <div class="tlslot"></div>
+      <div class="knobs"><div class="knob" id="mess"></div></div>
+      <div class="messlist adv-only" id="messlist"></div>
+    </section>
+
+    <!-- 4 · anomalies -->
+    <section class="panel" data-panel="4">
+      <h2>What should happen?</h2>
+      <p class="lede">Switch events on or off, and drag them on the timeline to move them. Real changes are what the tool must find; the others only look like one.</p>
+      <div class="tlslot"></div>
+      <div id="events"></div>
+      <details class="adv adv-only"><summary>Fine-tune every scenario <small>advanced · every generating mechanism and its raw parameters</small></summary><div class="scenarios" id="scenarios"></div></details>
+    </section>
+
+    <!-- 5 · watch -->
+    <section class="panel" data-panel="5" id="liveBlock">
+      <h2>Watch it arrive.</h2>
+      <p class="lede">The feed arrives one day at a time, the way the lab would send it.</p>
+      <div class="live">
+        <div class="clock"><small>Simulated time</small><b id="clock">–</b><small id="clockSub">Press Play to start the feed.</small></div>
+        <div class="controls">
+          <div class="chips adv-only" id="size"></div>
+          <div class="chips" id="rate"></div>
+          <div class="chips"><button class="chip strong" id="play">Play</button><button class="chip" id="all">Show everything</button></div>
+        </div>
+        <div class="counters" id="counters"></div>
+        <ol class="ticker" id="ticker"></ol>
+      </div>
+      <div class="plots">
+        <figure class="wide"><figcaption><b>When it happened, when it arrived</b> Each dot is a result. The further below the line, the later it arrived.</figcaption><div id="p-clock"></div></figure>
+        <figure class="adv-only"><figcaption><b>What arrived</b> Deliveries per time step, by kind.</figcaption><div id="p-kinds"></div></figure>
+        <figure class="adv-only"><figcaption><b>Still waiting</b> Cultures received but not yet complete. The last days are always unfinished.</figcaption><div id="p-backlog"></div></figure>
+        <figure class="wide"><figcaption><b>Arrivals by ward</b> Gaps are days when nothing arrived.</figcaption><div id="p-wards"></div></figure>
+        <figure class="adv-only"><figcaption><b>Case types</b> Where each case came from, and how many rows each scenario touched.</figcaption><div id="p-types"></div></figure>
+        <figure class="adv-only"><figcaption><b>Time to S/R result</b> Hours from sample to susceptibility result in the generated feed. The line marks the median measured in MIMIC.</figcaption><div id="p-delays"></div></figure>
+      </div>
+    </section>
+
+    <!-- 6 · data -->
+    <section class="panel" data-panel="6">
+      <h2>Take the data.</h2>
+      <p class="lede">Look through what was generated, and download it.</p>
+      <div class="tabs" id="tabs"></div>
+      <div class="filters">
+        <div class="chips adv-only" id="origin"></div>
+        <div class="chips adv-only" id="tagf"></div>
+        <input type="search" id="q" placeholder="Search">
+        <span class="grow"></span>
+        <a class="btn" id="csv">Download CSV</a>
+        <a class="btn" id="zip">Download feed (zip)</a>
+      </div>
+      <div class="tablewrap"><table id="table"></table></div>
+      <div class="pager"><button id="prev">Previous</button><span id="pageinfo"></span><button id="next">Next</button></div>
+    </section>
+
+    <!-- the timeline lives in steps 2–4 and gains a layer at each -->
+    <figure class="timeline" id="tlwrap"><div id="timeline"></div></figure>
+  </main>
+
+  <footer class="tray">
+    <div class="recipe" id="tray"></div>
+    <div class="state"><span class="spin" id="spin"></span><span class="status" id="status">Loading…</span></div>
+    <div class="nav"><button class="btn" id="back">Back</button><button class="go" id="nextStep">Next</button></div>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

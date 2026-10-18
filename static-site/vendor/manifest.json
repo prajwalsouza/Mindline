@@ -1,0 +1,10 @@
+{
+  "https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js": "vendor/d3.min.js",
+  "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js": "vendor/three/three.module.js",
+  "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/": "vendor/three/addons/",
+  "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600&family=Inter:ital,wght@0,400;0,600;1,400;1,600&display=swap": "vendor/fonts-21ae04cfd7.css",
+  "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;500;600;700&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap": "vendor/fonts-4fc6ef4e48.css",
+  "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap": "vendor/fonts-81745a8eba.css",
+  "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600&family=Inter:wght@400;500;600&display=swap": "vendor/fonts-ed9f6adf5b.css",
+  "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap": "vendor/fonts-bb20875fd4.css"
+}

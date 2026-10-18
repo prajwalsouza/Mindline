@@ -1,0 +1,4 @@
+/* Shared semantic text colour for the standalone interactive films. */
+:root { --organism: #956000; }
+:root[data-theme="dark"], :root[data-theme="matte-dark"] { --organism: #e6b95d; }
+.organism-entity { color: var(--organism); fill: var(--organism); }

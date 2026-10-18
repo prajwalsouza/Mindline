@@ -1,0 +1,143 @@
+{
+  "all|1 no growth / test only": {
+    "n": 1625,
+    "log_mean": 3.908,
+    "log_sd": 1.311
+  },
+  "all|2 organism": {
+    "n": 222,
+    "log_mean": 4.243,
+    "log_sd": 0.9
+  },
+  "all|3 susceptibility": {
+    "n": 1036,
+    "log_mean": 4.471,
+    "log_sd": 0.407
+  },
+  "blood|1 no growth / test only": {
+    "n": 507,
+    "log_mean": 4.805,
+    "log_sd": 0.507
+  },
+  "blood|2 organism": {
+    "n": 25,
+    "log_mean": 3.963,
+    "log_sd": 1.156
+  },
+  "blood|3 susceptibility": {
+    "n": 80,
+    "log_mean": 4.568,
+    "log_sd": 0.411
+  },
+  "other|1 no growth / test only": {
+    "n": 687,
+    "log_mean": 3.462,
+    "log_sd": 1.564
+  },
+  "other|2 organism": {
+    "n": 87,
+    "log_mean": 4.138,
+    "log_sd": 1.025
+  },
+  "other|3 susceptibility": {
+    "n": 228,
+    "log_mean": 4.404,
+    "log_sd": 0.283
+  },
+  "screening|1 no growth / test only": {
+    "n": 101,
+    "log_mean": 4.007,
+    "log_sd": 0.154
+  },
+  "urine|1 no growth / test only": {
+    "n": 209,
+    "log_mean": 3.393,
+    "log_sd": 0.396
+  },
+  "urine|2 organism": {
+    "n": 32,
+    "log_mean": 3.676,
+    "log_sd": 0.481
+  },
+  "urine|3 susceptibility": {
+    "n": 471,
+    "log_mean": 4.362,
+    "log_sd": 0.424
+  },
+  "wound|1 no growth / test only": {
+    "n": 121,
+    "log_mean": 3.492,
+    "log_sd": 1.642
+  },
+  "wound|2 organism": {
+    "n": 76,
+    "log_mean": 4.716,
+    "log_sd": 0.457
+  },
+  "wound|3 susceptibility": {
+    "n": 248,
+    "log_mean": 4.706,
+    "log_sd": 0.37
+  },
+  "_sample_hour_share": [
+    0.02,
+    0.0137,
+    0.0385,
+    0.02,
+    0.0322,
+    0.0185,
+    0.0185,
+    0.017,
+    0.0444,
+    0.0463,
+    0.057,
+    0.0622,
+    0.1018,
+    0.0751,
+    0.0418,
+    0.0537,
+    0.0662,
+    0.0492,
+    0.0303,
+    0.0333,
+    0.044,
+    0.0466,
+    0.0551,
+    0.0144
+  ],
+  "_release_hour_share": [
+    0.0021,
+    0.001,
+    0.0021,
+    0.0024,
+    0.0042,
+    0.0045,
+    0.0059,
+    0.0777,
+    0.1304,
+    0.0728,
+    0.1172,
+    0.127,
+    0.1162,
+    0.086,
+    0.0746,
+    0.078,
+    0.0253,
+    0.009,
+    0.0132,
+    0.0111,
+    0.0146,
+    0.0156,
+    0.008,
+    0.001
+  ],
+  "_weekday_median_h": {
+    "Sun": 78.7,
+    "Mon": 75.8,
+    "Tue": 93.6,
+    "Fri": 91.8,
+    "Wed": 68.5,
+    "Thu": 79.6,
+    "Sat": 68.3
+  }
+}

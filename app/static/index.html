@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" data-theme="quiet-light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mindline</title>
+  <meta name="description" content="Antibiotic resistance, ward by ward, as it happens. Demo with synthetic data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;500;600;700&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="notes.css">
+  <link rel="stylesheet" href="overview.css">
+  <link rel="stylesheet" href="export.css">
+  <link rel="stylesheet" href="insight-interpretation.css">
+  <link rel="stylesheet" href="knowledge.css">
+  <script>(function () { try { var th = localStorage.getItem("rl-theme"); if (th) document.documentElement.dataset.theme = th.replace(/"/g, ""); } catch (e) {} })();</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+  <script type="importmap">{"imports": {"three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+</head>
+<body>
+  <!-- sign in -->
+  <section class="login" id="login">
+    <div class="lg-left">
+      <div class="mark"><span></span><span></span><span></span><b>Mindline</b></div>
+      <div class="lg-body">
+        <h1>Sign in.</h1>
+        <div class="demo">
+          <button class="acct" data-acct="doctor"><i class="av">D</i><span><b>Doctor</b><em>doctor@mindline.demo</em></span><span class="go-arrow">→</span></button>
+          <button class="acct" data-acct="hygiene"><i class="av">H</i><span><b>Hygiene team</b><em>hygiene@mindline.demo</em></span><span class="go-arrow">→</span></button>
+          <a class="watch" id="lgwatch" href="/demo/"><i class="pl"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5l11 6.5-11 6.5z"/></svg></i><span>Watch the film</span><small>1½ min</small></a>
+        </div>
+        <form class="lg-form" id="lgform" autocomplete="off" hidden>
+          <div class="who-line" id="whoLine"></div>
+          <label class="fld"><span>Email</span><input id="email" type="text" spellcheck="false" placeholder="name@mindline.demo"><i></i></label>
+          <label class="fld"><span>Password</span><input id="password" type="password" placeholder="••••••••"><i></i></label>
+          <button class="go-round" id="signin" type="submit" aria-label="Sign in"><span>Sign in</span><b>→</b></button>
+          <button class="back-link" id="lgback" type="button">Choose another account</button>
+          <p class="lg-err" id="lgerr"></p>
+        </form>
+      </div>
+      <a class="admin-link" href="/admin/" title="Generate new data in real time"><span class="sw"></span>Admin</a>
+    </div>
+    <div class="lg-right">
+      <canvas id="dish"></canvas>
+    </div>
+    <button class="lg-theme" id="lgtheme" type="button">
+      <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6z"/></svg>
+      <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
+    </button>
+  </section>
+
+  <!-- the app -->
+  <section class="app" id="app" hidden>
+    <aside class="rail" id="side">
+      <button class="burger" id="burger" aria-label="Expand menu" aria-expanded="false"><span></span><span></span></button>
+      <nav id="sidenav"></nav>
+      <div class="rail-foot" id="railfoot"></div>
+    </aside>
+    <header class="bar">
+      <b class="bar-title" id="bartitle">Will it work here?</b>
+      <span class="asof" id="asof"></span>
+      <span class="grow"></span>
+      <button class="who" id="who" type="button" aria-label="Profile and settings"></button>
+    </header>
+    <main class="page" id="page"></main>
+    <div class="clockpill collapsed" id="clockpill" hidden><div id="simulation-controls" class="clock-controls" hidden></div><button type="button" class="clock-toggle" data-c="toggle" aria-label="Expand simulation controls" aria-expanded="false" aria-controls="simulation-controls"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 6l-6 6 6 6"/></svg></button></div>
+    <div class="dockpanel" id="dockpanel" hidden></div>
+    <nav class="dock" id="dock" aria-label="Controls" hidden></nav>
+  </section>
+
+  <script src="profile.js"></script>
+  <script src="entities.js"></script>
+  <script src="app.js"></script>
+  <script src="notes.js"></script>
+  <script src="export.js"></script>
+  <script src="insights.js"></script>
+  <script src="ask.js"></script>
+  <script src="morning.js"></script>
+  <script src="calendar.js"></script>
+  <script src="filters.js"></script>
+  <script src="overview.js"></script>
+  <script src="knowledge.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+{
+  "source": "Stanford ARMD (Dryad doi:10.5061/dryad.jq2bvq8kp, v2025-10-22)",
+  "resistance_rows": 2161648,
+  "cultures_with_earlier_resistance": 166537,
+  "return_gap_days": {
+    "p10": 28,
+    "p25": 64,
+    "median": 197,
+    "p75": 640,
+    "p90": 1484,
+    "bins": [
+      {
+        "from": 0,
+        "to": 7,
+        "share": 0.008
+      },
+      {
+        "from": 7,
+        "to": 30,
+        "share": 0.1027
+      },
+      {
+        "from": 30,
+        "to": 90,
+        "share": 0.2089
+      },
+      {
+        "from": 90,
+        "to": 180,
+        "share": 0.1584
+      },
+      {
+        "from": 180,
+        "to": 365,
+        "share": 0.1561
+      },
+      {
+        "from": 365,
+        "to": 730,
+        "share": 0.1423
+      },
+      {
+        "from": 730,
+        "to": 1825,
+        "share": 0.1523
+      },
+      {
+        "from": 1825,
+        "to": null,
+        "share": 0.0713
+      }
+    ]
+  },
+  "intrinsic_pairs": [
+    {
+      "organism": "Citrobacter freundii",
+      "drug": "AMP",
+      "source_rule": "CITROBACTER \u2013 Ampicillin: Resistant"
+    },
+    {
+      "organism": "Klebsiella pneumoniae",
+      "drug": "AMP",
+      "source_rule": "KLEBSIELLA \u2013 Ampicillin: Resistant"
+    },
+    {
+      "organism": "Klebsiella oxytoca",
+      "drug": "AMP",
+      "source_rule": "KLEBSIELLA \u2013 Ampicillin: Resistant"
+    },
+    {
+      "organism": "Pseudomonas aeruginosa",
+      "drug": "AMP",
+      "source_rule": "Pseudomonas aeruginosa \u2013 Ampicillin: Resistant"
+    },
+    {
+      "organism": "Pseudomonas aeruginosa",
+      "drug": "CRO",
+      "source_rule": "Pseudomonas aeruginosa \u2013 Ceftriaxone: Resistant"
+    }
+  ]
+}

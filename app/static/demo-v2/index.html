@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbfaf7">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='7' r='6' fill='%23da442f'/%3E%3Ccircle cx='7' cy='24' r='6' fill='%23252522'/%3E%3Ccircle cx='25' cy='24' r='6' fill='%23252522'/%3E%3C/svg%3E">
+  <title>Mindline · Version 2 demo</title>
+  <meta name="description" content="Where does a doctor's decision begin? A 106-second visual essay about evidence, experience and Mindline.">
+  <link rel="stylesheet" href="assets/fonts.css">
+  <link rel="stylesheet" href="film.css">
+  <link rel="stylesheet" href="../entities.css">
+  <script src="../entities.js" defer></script>
+  <script src="data.js" defer></script>
+  <script src="film.js" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <a class="wordmark" href="../" aria-label="Open Mindline"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span>Mindline</a>
+    <span class="edition">Version 2 <span>· A visual essay</span></span>
+    <button id="about">Story & sources</button>
+  </header>
+  <main id="stage" aria-label="Mindline visual story">
+    <section id="scene" aria-labelledby="headline">
+      <div class="scene-heading"><p class="eyebrow" id="chapter"></p><h1 id="headline"></h1></div>
+      <div id="visual"></div>
+      <div class="scene-caption"><p id="caption"></p><p id="footnote"></p></div>
+    </section>
+  </main>
+  <footer class="transport" aria-label="Film playback">
+    <div id="chapters" class="chapters" aria-label="Choose a scene"></div>
+    <div class="playback-row">
+      <div class="play-buttons"><button id="previous" aria-label="Previous scene" title="Previous scene (Left arrow)">←</button><button id="play" class="play">Play film <span>↗</span></button><button id="next" aria-label="Next scene" title="Next scene (Right arrow)">→</button></div>
+      <label class="seek-label"><span class="sr-only">Film position in seconds</span><input id="seek" type="range" min="0" max="106" step="0.1" value="0"></label>
+      <output id="time" aria-label="Film time">0:00 / 1:46</output>
+      <button id="music" aria-pressed="true">Music on</button>
+      <button id="fullscreen" aria-label="Toggle fullscreen" title="Fullscreen">⛶</button>
+    </div>
+  </footer>
+  <dialog id="credits" aria-labelledby="credits-title">
+    <div class="dialog-top"><h2 id="credits-title">The story behind the film</h2><button id="close-credits" aria-label="Close story and sources">Close ×</button></div>
+    <p>This is Version 2. The original demo is <a href="../demo/">preserved here</a>. The film runs for 1 minute 46 seconds, with original instrumental music and no voiceover.</p>
+    <h3>Where the idea comes from</h3>
+    <p>John Gabbay and Andrée le May studied knowledge use in two English general practices. They described clinical “mindlines” shaped through experience, reading, patients and trusted colleagues. This is published ethnography, not fieldwork conducted by our team or a claim about every doctor.</p>
+    <p><a href="https://www.bmj.com/content/329/7473/1013" target="_blank" rel="noreferrer">Gabbay & le May · BMJ, 2004</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/15514347/" target="_blank" rel="noreferrer">PubMed record</a></p>
+    <h3>What you are seeing</h3>
+    <p>Product scenes are simplified, interactive reconstructions using frozen outputs from the prototype. All clinical records are synthetic. Counts and estimates are laboratory results, not treatment recommendations or probabilities of cure.</p>
+    <ul><li>The doctor scene uses Urology / women / urine, all ages, as of 1 November 2026.</li><li>The ward scene uses 30 October 2026. Nine resistant cases in the ICU are compared with about 1.5 expected over four weeks. The older snapshot's 337-day divisor was corrected to the 365-day baseline in this V2 data only.</li><li>The prediction example uses Urology urine results as of 27 September 2026: 13 historical four-week test windows, 580 nitrofurantoin tests. Earlier samples estimate the probability of a resistant result. Lower average log loss is better. This is a historical comparison, not clinical validation.</li><li>The question-to-chart scene is a scripted replay of the new Ask feature. No model is called from this film. The app can use cached model answers or an explicitly initiated live answer.</li><li>The note scene shows current patient-linked capture. Automatic publication of a new note to colleagues is not demonstrated. Reason extraction in this capture flow is deterministic prototype logic.</li><li>The generator scene explains resampling and configured events. Its branches are illustrative, not forecasts of actual outbreaks.</li></ul>
+    <p class="source-note">Keyboard: Space / K to play or pause; ← / → to change scene; Home / End to jump. Selecting evidence pauses playback. Reduced motion starts paused and shows settled drawings. Add <code>?clean=1</code> for a view without controls; <code>&autoplay=1</code> starts it silently for capture.</p>
+    <p><a href="SCRIPT.md">Read the complete script</a> · <a href="../">Open the app</a></p>
+  </dialog>
+  <audio id="score" src="assets/mindline-v2-instrumental.mp3" preload="metadata"></audio>
+  <noscript>This visual essay needs JavaScript. <a href="SCRIPT.md">Read the script instead.</a></noscript>
+</body>
+</html>

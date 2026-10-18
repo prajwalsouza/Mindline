@@ -1,0 +1,5 @@
+# Preserve original dataset bytes so source manifests remain valid across systems.
+data/synthetic_microbiology_dataset/*.csv -text
+
+# PDFs contain byte offsets; never normalize their line endings.
+*.pdf binary

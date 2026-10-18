@@ -1,0 +1,13 @@
+/* Keep interpretation visible, including when the pointer is away from the chart. */
+.i-interpret { grid-column: 1 / -1; min-width: 0; max-width: 64ch; }
+.ins-side > .i-interpret { flex: 1 1 300px; }
+.i-interpret h4 { margin: 0 0 8px; font: 600 14px/1.4 var(--body); color: var(--ink); }
+.i-interpret p, .i-chart-key { margin: 0 0 12px; font: 400 13px/1.5 var(--body); color: var(--ink-2); }
+.i-interpret p:last-child { margin-bottom: 0; }
+.i-interpret b { color: var(--ink); font-weight: 600; }
+.i-interpret .i-ci { display: block; width: 100%; height: auto; max-width: 440px; margin: 4px 0 10px; overflow: visible; }
+.i-ci text { font: 400 10px var(--body); fill: var(--ink-2); }
+.i-change .s { opacity: 1 !important; transform: none !important; }
+.i-chart-key { max-width: 78ch; margin-top: 16px; }
+.i-observed { padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+@media print { .i-interpret { break-inside: avoid; } }
