@@ -6,6 +6,7 @@ node_modules/
 .env.*
 !.env.example
 app/.runtime/
+.runtime/
 data-prep/external/
 data-prep/simulator/runs/
 static-site/dist/
